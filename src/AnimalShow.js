@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import bird from './images/bird.svg';
 import cat from './images/cat.svg';
 import cow from './images/cow.svg';
@@ -12,7 +12,23 @@ let obj = {
 }
 
 export default function AnimalShow({type}) {
+  let [clicks,setClicks] = useState(0);
+
+  const handleClick = () => {
+    setClicks(clicks + 1);
+  }
   return (
+    <div onClick = {handleClick}>
+
     <img src = {obj[type]} alt = "imag"></img>
+
+    <img 
+    src = {obj["heart"]} 
+    alt = "imag"
+    style={{width : 10 + 10 * clicks,height : 10 + 10 * clicks}}
+    ></img>
+
+    </div>
+ 
   )
 }
